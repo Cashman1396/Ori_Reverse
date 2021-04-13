@@ -6,13 +6,18 @@ Theme Name: ReverseOri
 img {
     max-width: 100%;
     height: auto;
+    position: relative;
   }
+
+p {
+  text-align: center;
+}
 a, a:hover, button, button:hover {
     transition: all 0.2s;
   }
 
 a:hover {
-    color:orange;
+    color:crimson;
 }
 
 .hide {
