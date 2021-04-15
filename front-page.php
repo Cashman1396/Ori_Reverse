@@ -5,7 +5,7 @@ get_header();
 
 <!--- Post types and pages not overlap ---->
 
-<p> Hello World</p>
+<p> Welcome to the Oricale WordPress Site, this is where projects we have done with shown and posted</p>
 
 
 
