@@ -12,9 +12,7 @@ img {
     
   }
 
-p {
-  text-align: center;
-}
+
 a, a:hover, button, button:hover {
     transition: all 0.2s;
   }
@@ -67,3 +65,12 @@ li a:hover {
    
 }
 
+
+.gallery {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project {
+  text-align: center;
+}
