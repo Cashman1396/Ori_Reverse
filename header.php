@@ -25,4 +25,4 @@
 <header> 
 
 
-    <h1><a href="<?php echo get_site_url(); ?>"><?php print get_the_title(); ?></a></h1>
+    <h1><?php print get_the_title(); ?></h1>
