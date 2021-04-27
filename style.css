@@ -86,7 +86,7 @@ p {
 }
 
 .table-slider {
-
+    max-width: 80%;
 }
 
 .small-slider img {
