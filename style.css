@@ -34,7 +34,7 @@ h1 {
 }
 
 body {
-    background-color: white;
+    background-color: blue;
 }
 
 ul {
@@ -75,5 +75,11 @@ li a:hover {
 }
 
 p {
+  text-align: center;
+}
+
+.your-class, .slider-for, .slider-nav {
+  max-width: 80vw;
+  margin: 0 auto;
   text-align: center;
 }
