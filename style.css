@@ -34,7 +34,7 @@ h1 {
 }
 
 body {
-    background-color: blue;
+    background-color: rgb(43, 170, 255);
 }
 
 ul {
@@ -78,8 +78,18 @@ p {
   text-align: center;
 }
 
-.your-class, .slider-for, .slider-nav {
+ .slider-for, .slider-nav {
   max-width: 80vw;
   margin: 0 auto;
   text-align: center;
+
 }
+
+.table-slider {
+
+}
+
+.small-slider img {
+  width: 80%;
+}
+

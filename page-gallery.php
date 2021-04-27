@@ -19,7 +19,7 @@ get_header();
 <?php 
 $images = get_field('gallery');
 if( $images ): ?>
-    <div class="slider-for">
+    <div class="slider-for table-slider">
         <?php foreach( $images as $image_ID ): ?>
             <div>
                 <?= wp_get_attachment_image($image_ID, "full") ?>
@@ -29,16 +29,18 @@ if( $images ): ?>
         </div>
 <?php endif; ?>
 
+
 <?php if( $images ): ?>
     <div class="slider-nav">
         <?php foreach( $images as $image_ID ): ?>
-            <div>
+            <div class="small-slider"> 
                 <?= wp_get_attachment_image($image_ID, "full") ?>
                 
         </div>
         <?php endforeach; ?>
         </div>
 <?php endif; ?>
+        
      <?php the_content() ?> <!--Grabs any content added to the Editor-->
     <?php endwhile; // end of the loop. ?>
 
