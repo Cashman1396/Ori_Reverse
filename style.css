@@ -74,7 +74,9 @@ li a:hover {
   text-align: center;
 }
 
-
+.footer {
+  text-align: center;
+}
 
  .slider-for, .slider-nav {
   max-width: 80vw;

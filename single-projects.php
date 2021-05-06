@@ -9,7 +9,7 @@ get_header(); ?>
 
     <div id="primary" class="content-area">
         <div id="content" class="site-content" role="main">
-			<img src= "<?php echo get_relative_thumb( 'medium' ); ?>">
+			<img src= "<?php echo get_relative_thumb( 'large' ); ?>">
             <?php
                 // Start the Loop.
 				
@@ -21,5 +21,6 @@ get_header(); ?>
 </div><!-- #main-content -->
 
 
-
+<div class="footer">
 <?php get_footer(); ?>
+</div>
