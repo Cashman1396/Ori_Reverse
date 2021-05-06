@@ -4,6 +4,21 @@
 get_header(); 
  
 ?>
+
+
+<!--- Catergories START ---> 
+<?php 
+
+$args = array();
+
+$cate = get_categories();
+
+
+
+
+?>
+
+
 <!-- ============ CONTENT START ============ -->
 <div class="container">
     <div class="row">
@@ -15,6 +30,23 @@ get_header();
             </div><!-- End intro/descriptive copy column-->
         </div> <!-- End intro/descriptive copy container-->
     </div>
+
+
+    <?php
+        echo "Filter:";
+		foreach ( $cate as $category ) { ?>
+
+		<input class="filter-option category" type="checkbox" id="<?= $category->slug; ?>" name="category" value="<?= $category->slug; ?>" data-category="<?= $category->slug; ?>"><label class="filter-option-label" for="<?= $category->slug; ?>">
+		<?= $category->name; ?></label>
+
+
+	<?php } ?>
+
+
+
+    <!--- Custom Loop --->
+
+
          
     <div id="projects" class="row">        
     <!-- Start projects Loop -->

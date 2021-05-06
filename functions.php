@@ -15,7 +15,28 @@ function mortal_theme() {
 
     //Style
     wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css' );
+
+
+
+    //Ajax
+    wp_enqueue_script('ajax-trigger', get_template_directory_uri() . '/inc/js/ajax-trigger.js', array('jquery'), NULL, true);
+    
+    wp_localize_script( 'ajax-trigger', 'wp_ajax',
+        array(
+            'ajax_url' => admin_url('admin-ajax.php'), // WordPress AJAX
+            'posts' => json_encode( $loop->query_vars ), // everything about your loop is here
+            'current_page' => $loop->query_vars['paged'] ? $loop->query_vars['paged'] : 1,
+            'max_page' => $loop->max_num_pages
+        )
+    );
+
 }
+
+
+require_once get_template_directory() . '/inc/php/ajax-load.php';
+
+
+
      add_action( 'wp_enqueue_scripts', 'mortal_theme' );
 
 function setup_projects_cpt(){
@@ -42,7 +63,7 @@ function setup_projects_cpt(){
         'menu_position' => 5,
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
         'has_archive' => true,
-        'taxonomies' => array(''),
+        'taxonomies' => array('category'),
         'menu_icon' => 'dashicons-admin-multisite', //Find the appropriate dashicon here: https://developer.wordpress.org/resource/dashicons/
         );
     register_post_type('projects', $args);
