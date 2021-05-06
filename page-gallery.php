@@ -46,5 +46,6 @@ if( $images ): ?>
 
 
 
-<?php get_footer(); 
-?>
+<div class="footer">
+<?php get_footer(); ?>
+</div>

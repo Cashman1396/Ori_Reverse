@@ -41,4 +41,6 @@ get_header();
 </div><!-- End Container --> 
 <!-- ============ CONTENT END ============ -->
  
+<div class="footer">
 <?php get_footer(); ?>
+</div>
