@@ -11,8 +11,8 @@ function filter_ajax() {
 	$sort = $_POST['sort'];
 
     $get_posts = array( 
-        'post_type' => 'post',
-		'posts_per_page' => 3
+        'post_type' => 'projects',
+		'posts_per_page' => -1
 	);
     
     if ($categories != '') {
@@ -25,6 +25,8 @@ function filter_ajax() {
     
     $loop = new WP_Query( $get_posts ); 
 
+
+    
 	if ( $loop->have_posts() ) { ?>
 
 	<div class="row">
@@ -33,13 +35,21 @@ function filter_ajax() {
 		</div>
 	</div>
 
-	<div class="page-wrapper" data-page="1" data-max="<?php echo $loop->max_num_pages ?>" data-category="<?php echo $categories; ?>" data-sort="<?php echo $sort; ?>">
-		<div class="row">
-			<?php while ( $loop->have_posts() ) { $loop->the_post(); ?>
-				<?php get_template_part('template-parts/content', 'single_preview'); ?>
-			<?php } ?>
-		</div>
-	</div>
+
+    <?php while ( $loop->have_posts() ) : $loop->the_post();  ?>
+
+                                     
+        <?php echo '<div class="project col-sm-6 col-md-3">';?>
+        
+            <a href="<?php print get_permalink($post->ID) ?>">
+                <?php echo the_post_thumbnail(); ?></a>
+                <h4><?php print get_the_title(); ?></h4>
+                <?php print get_the_excerpt(); ?><br />
+                <a class="btn btn-default" href="<?php print get_permalink($post->ID) ?>">Details</a>
+        </div> <!-- End individual project col -->
+        <?php endwhile; ?> 
+
+        
    
     <?php if (  $loop->max_num_pages > 1 ) : ?>
     <div class="row">
@@ -98,4 +108,40 @@ function load_more_ajax() {
 <?php
     
     die();
+}
+
+
+
+add_action('wp_ajax_nopriv_more_post_ajax', 'more_post_ajax');
+add_action('wp_ajax_more_post_ajax', 'more_post_ajax');
+
+
+function more_post_ajax(){
+
+    $ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 3;
+    $page = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 0;
+
+    header("Content-Type: text/html");
+
+    $args = array(
+        'suppress_filters' => true,
+        'post_type' => 'projects',
+        'posts_per_page' => $ppp,
+        'paged'    => $page,
+    );
+
+    $loop = new WP_Query($args);
+
+    $out = '';
+
+    if ($loop -> have_posts()) :  while ($loop -> have_posts()) : $loop -> the_post();
+        $out .= '<div class="small-12 large-4 columns">
+                <h1>'.get_the_title().'</h1>
+                <p>'.get_the_content().'</p>
+         </div>';
+
+    endwhile;
+    endif;
+    wp_reset_postdata();
+    die($out);
 }

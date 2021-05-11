@@ -93,3 +93,11 @@ li a:hover {
   width: 80%;
 }
 
+#more_posts {
+  text-align: center;
+  font-size: 24px;
+}
+
+.text {
+  margin-right: 20px;
+}

@@ -19,18 +19,23 @@ function mortal_theme() {
 
 
     //Ajax
+    
     wp_enqueue_script('ajax-trigger', get_template_directory_uri() . '/inc/js/ajax-trigger.js', array('jquery'), NULL, true);
+    wp_register_script( 'ajax-trigger', get_template_directory_uri() . '/inc/js/ajax-trigger.js');
+    wp_enqueue_script( 'ajax-trigger' );
     
     wp_localize_script( 'ajax-trigger', 'wp_ajax',
         array(
             'ajax_url' => admin_url('admin-ajax.php'), // WordPress AJAX
             'posts' => json_encode( $loop->query_vars ), // everything about your loop is here
             'current_page' => $loop->query_vars['paged'] ? $loop->query_vars['paged'] : 1,
-            'max_page' => $loop->max_num_pages
+            'max_page' => $loop->max_num_pages,
+            'noposts' => __('No older posts found', 'twentyfifteen'),
         )
     );
 
 }
+
 
 
 require_once get_template_directory() . '/inc/php/ajax-load.php';
@@ -93,8 +98,8 @@ function get_relative_thumb( $size ) {
      );
    }
    add_action( 'init', 'register_my_menus' );
-  
- 
+
+
 
 
 ?>

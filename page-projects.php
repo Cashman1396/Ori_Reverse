@@ -14,6 +14,14 @@ $args = array();
 $cate = get_categories();
 
 
+$postsPerPage = 3;
+
+$args1 = array(
+    'post_type' => 'post',
+    'posts_per_page' => $postsPerPage,
+);
+
+
 
 
 ?>
@@ -44,12 +52,10 @@ $cate = get_categories();
 
 
 
-    <!--- Custom Loop --->
-
-
-         
+  
+  <div id="ajax-posts">
     <div id="projects" class="row">        
-    <!-- Start projects Loop -->
+        <!-- Start projects Loop -->
         <?php
         /* 
         Query the post 
@@ -69,9 +75,14 @@ $cate = get_categories();
                 <a class="btn btn-default" href="<?php print get_permalink($post->ID) ?>">Details</a>
         </div> <!-- End individual project col -->
         <?php endwhile; ?> 
-    </div><!-- End Projects Row -->
+
+        </div><!-- End Projects Row -->
+    </div>
+    <div id="more_posts">Load More</div>
+    
 </div><!-- End Container --> 
 <!-- ============ CONTENT END ============ -->
+
  
 <div class="footer">
 <?php get_footer(); ?>

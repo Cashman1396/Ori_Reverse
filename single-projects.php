@@ -10,12 +10,14 @@ get_header(); ?>
     <div id="primary" class="content-area">
         <div id="content" class="site-content" role="main">
 			<img src= "<?php echo get_relative_thumb( 'large' ); ?>">
+            <div class="text">
             <?php
                 // Start the Loop.
 				
 				 
                 the_content(); 
             ?>
+            </div>
         </div><!-- #content -->
     </div><!-- #primary -->
 </div><!-- #main-content -->
