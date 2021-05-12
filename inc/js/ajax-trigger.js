@@ -87,7 +87,7 @@
 
 
 	$(document).ready( function() {
-		var ppp = 5;
+		var ppp = 3;
 		var pageNumber = 1;
 
 		function load_posts(){
