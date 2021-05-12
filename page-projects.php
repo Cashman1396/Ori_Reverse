@@ -17,7 +17,7 @@ $cate = get_categories();
 $postsPerPage = 3;
 
 $args1 = array(
-    'post_type' => 'post',
+    'post_type' => 'projects',
     'posts_per_page' => $postsPerPage,
 );
 
@@ -74,12 +74,10 @@ $args1 = array(
                 <?php print get_the_excerpt(); ?><br />
                 <a class="btn btn-default" href="<?php print get_permalink($post->ID) ?>">Details</a>
         </div> <!-- End individual project col -->
-        <?php endwhile; ?> 
-
+        <?php endwhile; ?>
         </div><!-- End Projects Row -->
     </div>
     <div id="more_posts">Load More</div>
-    
 </div><!-- End Container --> 
 <!-- ============ CONTENT END ============ -->
 
