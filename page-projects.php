@@ -39,7 +39,7 @@ $args1 = array(
         </div> <!-- End intro/descriptive copy container-->
     </div>
 
-
+<div class="filter">
     <?php
         echo "Filter:";
 		foreach ( $cate as $category ) { ?>
@@ -49,6 +49,7 @@ $args1 = array(
 
 
 	<?php } ?>
+</div>
 
 
 
