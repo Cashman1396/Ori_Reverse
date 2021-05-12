@@ -117,7 +117,7 @@
 		}
 		
 		$("#more_posts").on("click",function(){ // When btn is pressed.
-			$("#more_posts").attr("disabled", true); // Disable the button, temp.
+			$("#more_posts").attr("enabled", true); // Disable the button, temp.
 			load_posts();
 			$(this).insertAfter('#ajax-posts'); // Move the 'Load More' button to the end of the the newly added posts.
 		});
