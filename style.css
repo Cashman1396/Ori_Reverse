@@ -101,3 +101,10 @@ li a:hover {
 .text {
   margin-right: 20px;
 }
+
+.filter {
+  margin: 5px;
+  color: darkcyan;
+  border: cyan;
+  border-style: solid;
+}
