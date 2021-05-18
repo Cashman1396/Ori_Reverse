@@ -29,7 +29,7 @@ function filter_ajax() {
     
 	if ( $loop->have_posts() ) { ?>
 
-	<div class="row">
+    <div id="category" class="row" data-category="<?php echo $categories?>">
 		<div class="col text-center">
 			<div id="filter-message"></div>
 		</div>
@@ -124,7 +124,7 @@ function more_post_ajax(){
 
     $ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 4;
     $page = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 0;
-    $categories = $_POST['category'];
+    $categories = $_POST['trying'];
 
     header("Content-Type: text/html");
 
@@ -136,16 +136,15 @@ function more_post_ajax(){
     );
 
     if ($categories != '') {
-        $get_posts['category_name'] = $categories;
+        $args['category_name'] = $categories;
     }
 
     $loop = new WP_Query($args);
 
-    $out = '';
 
     if ($loop -> have_posts()) : echo "<div class='row'>";  while ($loop -> have_posts()) : $loop -> the_post();
      echo '<div class="project col-sm-6 col-md-3">';?>
-        
+    <?php echo $categories ?>
     <a href="<?php print get_permalink($post->ID) ?>">
         <?php echo the_post_thumbnail(); ?></a>
         <h4><?php print get_the_title(); ?></h4>

@@ -90,15 +90,23 @@
 		var ppp = 4;
 		var pageNumber = 1;
 
+		var categories = [];
+		var trying = $("#category").data('category');
+            
+
+		
 		function load_posts(){
 			pageNumber++;
-			var str = '&pageNumber=' + pageNumber + '&ppp=' + ppp + '&action=more_post_ajax';
+			var str = '&pageNumber=' + pageNumber + '&ppp=' + ppp + '&action=more_post_ajax' + '&category=' + categories ;
 			$.ajax({
 				action: 'more_post',
 				type: "POST",
 				dataType: "html",
 				url: wp_ajax.ajax_url,
+				category: trying,
 				data: str,
+
+
 				success: function(data){
 					var $data = $(data);
 					if($data.length){
@@ -118,7 +126,7 @@
 		}
 		
 		$("#more_posts").on("click",function(){ // When btn is pressed.
-			$("#more_posts").attr("enabled", true); // Disable the button, temp.
+			$("#more_posts").attr("disabled", true); // Disable the button, temp.
 			load_posts();
 			$(this).insertAfter('#ajax-posts'); // Move the 'Load More' button to the end of the the newly added posts.
 		});
