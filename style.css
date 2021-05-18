@@ -104,7 +104,10 @@ li a:hover {
 
 .filter {
   margin: 5px;
-  color: darkcyan;
-  border: cyan;
+  color: rgb(1, 131, 131);
+  border:rgb(2, 116, 116);
   border-style: solid;
+  font-weight: bold;
+  
+  
 }
