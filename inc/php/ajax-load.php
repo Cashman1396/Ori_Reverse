@@ -12,7 +12,7 @@ function filter_ajax() {
 
     $get_posts = array( 
         'post_type' => 'projects',
-		'posts_per_page' => -1
+		'posts_per_page' => 4
 	);
     
     if ($categories != '') {
@@ -52,12 +52,15 @@ function filter_ajax() {
         
    
     <?php if (  $loop->max_num_pages > 1 ) : ?>
+    <!---
     <div class="row">
         <div class="col text-center">
             <?php echo '<a href="#" class="btn" id="loadmore">See More</a>'; // you can use <a> as well ?>
         </div>
     </div>
+    --->
     <?php endif;
+    
 
 	 } else {
 		echo 'No Posts found.';
@@ -66,6 +69,7 @@ function filter_ajax() {
 	wp_reset_postdata(); 
 	
     die();
+
 }
 
 
@@ -97,14 +101,14 @@ function load_more_ajax() {
     $loop = new WP_Query( $get_posts ); 
 ?>
 
-    <div class="row">
+
         <?php if ($loop->have_posts()) : // (3) ?>
 
         <?php while ( $loop->have_posts() ) { $loop->the_post(); ?>
 			<?php get_template_part('template-parts/content', 'single_preview'); ?>
 		<?php } 
 		endif; ?>
-    </div>
+   
 <?php
     
     die();
@@ -118,8 +122,9 @@ add_action('wp_ajax_more_post_ajax', 'more_post_ajax');
 
 function more_post_ajax(){
 
-    $ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 3;
+    $ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 4;
     $page = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 0;
+    $categories = $_POST['category'];
 
     header("Content-Type: text/html");
 
@@ -130,18 +135,29 @@ function more_post_ajax(){
         'paged'    => $page,
     );
 
+    if ($categories != '') {
+        $get_posts['category_name'] = $categories;
+    }
+
     $loop = new WP_Query($args);
 
     $out = '';
 
-    if ($loop -> have_posts()) :  while ($loop -> have_posts()) : $loop -> the_post();
-        $out .= '<div class="small-12 large-4 columns">
-                <h1>'.get_the_title().'</h1>
-                <p>'.get_the_content().'</p>
-         </div>';
+    if ($loop -> have_posts()) : echo "<div class='row'>";  while ($loop -> have_posts()) : $loop -> the_post();
+     echo '<div class="project col-sm-6 col-md-3">';?>
+        
+    <a href="<?php print get_permalink($post->ID) ?>">
+        <?php echo the_post_thumbnail(); ?></a>
+        <h4><?php print get_the_title(); ?></h4>
+        <?php print get_the_excerpt(); ?><br />
+        <a class="btn btn-default" href="<?php print get_permalink($post->ID) ?>">Details</a>
+</div> 
+<?php
 
     endwhile;
+    echo "</div>";
     endif;
     wp_reset_postdata();
     die($out);
 }
+

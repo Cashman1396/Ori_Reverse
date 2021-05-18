@@ -87,16 +87,17 @@
 
 
 	$(document).ready( function() {
-		var ppp = 3;
+		var ppp = 4;
 		var pageNumber = 1;
 
 		function load_posts(){
 			pageNumber++;
 			var str = '&pageNumber=' + pageNumber + '&ppp=' + ppp + '&action=more_post_ajax';
 			$.ajax({
+				action: 'more_post',
 				type: "POST",
 				dataType: "html",
-				url: ajax_posts.ajaxurl,
+				url: wp_ajax.ajax_url,
 				data: str,
 				success: function(data){
 					var $data = $(data);
