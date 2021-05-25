@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Projects Portfolio */
+/* Template Name: Games Library */
   
 get_header(); 
  
