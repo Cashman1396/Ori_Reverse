@@ -5,12 +5,6 @@
 get_header(); 
 ?>
 
-<div class="your-class">
-    <div>First </div>
-    <div>Second </div>
-    <div>It works!</div>
-  </div>
-
 
 <?php while ( have_posts() ) : the_post(); ?> <!--queries the projects-page.php-->
 	
